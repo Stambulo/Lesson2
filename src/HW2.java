@@ -9,6 +9,36 @@
 
 public class HW2 {
     public static void main(String[] args) {
+        String[][] arr = {
+                {"1", "two", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
+        System.out.println(counter(arr));
+    }
 
+    public static int counter(String[][] arr){
+        int sum = 0;
+        for (int i = 0; i <= 3; i++) {
+            for (int j = 0; j <= 3; j++) {
+                try {
+                    sum += parsing(arr[i][j]);
+                }catch(ArrayIndexOutOfBoundsException e){
+                    System.out.println("Ошибка в элементе массива ["+i+"]["+j+"]");
+                }
+            }
+        }
+        return sum;
+    }
+
+    public static int parsing(String s){
+        int res=0;
+        try {
+            res = Integer.parseInt(s);
+        }catch(NumberFormatException e){
+            System.out.println("NumberFormatException - "+s);
+        }
+        return res;
     }
 }
